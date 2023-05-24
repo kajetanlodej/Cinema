@@ -1,0 +1,106 @@
+﻿@{ // Tutaj zawiera sie strona startowa
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Strona Kina - KSiOiZ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: lightslategray;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            margin-top: -150px;
+            width: 100%;
+        }
+
+        .gallery-item {
+            background-color: #fff;
+            border-radius: 10px;
+            padding-top: 15px;
+            width: 20%;
+            text-align: center;
+        }
+
+        .gallery-item img {
+            width: 80%;
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+
+        .gallery-item h3 {
+            font-size: 1.9rem;
+            margin-bottom: 10px;
+        }
+
+        .gallery-item p {
+            font-size: 1.2rem;
+        }
+
+        .gallery-item a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 120px;
+            padding-top: 120px;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>
+        KiNo
+        Siedz, ogladaj<br>
+        i zarządzaj !!!
+    </h1>
+    <div class="gallery">
+        <div class="gallery-item">
+            <a href="@Url.Action("ViewAll", "Reservations")">
+                <img src="~/Content/reservations.jpg" alt="Obrazek 1">
+                <h3>Rezerwacje</h3>
+                <p>Ustaw rezerwacje</p>
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="@Url.Action("ViewAll", "Movie")">
+                <img src="~/Content/movie.jpg" alt="Obrazek 2">
+                <h3>Filmy</h3>
+                <p>Zmieniaj filmy z kolekcji</p>
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a href="@Url.Action("ViewAll","CinemaRoom")">
+                <img src="~/Content/cinemaroom.jpg" alt="Obrazek 3">
+                <h3>Sala Kinowa</h3>
+                <p>Zarzadzaj salami</p>
+            </a>
+        </div>
+        <div class="gallery-item">
+            <a  href="@Url.Action("ViewAll","Screening")">
+                <img src="~/Content/screening.jpg" alt="Obrazek 4">
+                <h3>Seanse</h3>
+                <p>Miej reke na seansach</p>
+            </a>
+        </div>
+    </div>
+    <footer>
+        <p>Pozdrawiamy z najlepszego kina!</p>
+        Arkadiusz Florek, Kajetan Łodej 
+    </footer>
+</body>
+</html>

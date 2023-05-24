@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Documention";
+}
+
+<h2>Cel Projektu</h2>
+<p>
+
+    Celem projektu jest stworzenie systemu obsługi kina, który umożliwia zarządzanie filmami, seansami, salami kinowymi oraz rezerwacjami biletów. System ma służyć zarówno personelowi kina zapewniając łatwą i efektywną obsługę procesów związanych z wyświetlaniem filmów i sprzedażą biletów.
+</p>
+<h2>
+    Zastosowanie biznesowe
+</h2>
+<p>
+    Zastosowanie biznesowe systemu obejmuje:
+    <ul>
+        <li style="font-size: 14px">
+            Zarządzanie filmami: System umożliwia dodawanie, edycję i usuwanie informacji o filmach, takich jak tytuł i opis. Pracownicy kina mogą dodawać nowe filmy do bazy danych oraz aktualizować istniejące informacje na temat filmów.
+        </li>
+        <li style="font-size: 14px">
+            Planowanie seansów: System umożliwia tworzenie harmonogramu seansów, gdzie można ustalić datę, godzinę, salę kinową i przypisać film do danego seansu. Personel kina może łatwo zarządzać harmonogramem seansów, planować pokazy filmowe i zapewniać, że sala kinowa jest odpowiednio wykorzystana.
+        </li>
+        <li style="font-size: 14px">
+            Rezerwacje biletów: Klienci mogą dokonywać rezerwacji biletów na wybrane seanse poprzez system. System przechowuje informacje o zarezerwowanych miejscach oraz dane kontaktowe klientów. Personel kina może łatwo zarządzać rezerwacjami, potwierdzać lub anulować rezerwacje oraz generować bilety.
+        </li>
+        <li style="font-size: 14px">
+            Zarządzanie salami kinowymi: System umożliwia dodawanie i zarządzanie informacjami o salach kinowych, takimi jak numer sali i pojemność. Personel kina może przypisywać seanse do konkretnych sal kinowych, monitorować dostępność miejsc oraz zoptymalizować rozkład seansów.
+        </li>
+    </ul>
+    Zastosowanie biznesowe systemu obsługi kina pozwala na efektywne zarządzanie procesami związanymi z wyświetlaniem filmów, sprzedażą biletów i obsługą klientów.
+</p>
+
+<h2>
+    Modele:
+</h2>
+
+<p>
+    Baza danych "CinemaApp" składa się z czterech tabel: CinemaRooms, Movies, Screenings oraz Reservations. Każda tabela reprezentuje różne elementy systemu obsługi kina i ma swoje właściwe pola. Poniżej przedstawiam opis poszczególnych tabel:
+
+    <ul>
+        <li style="font-size: 14px">
+            Tabela "CinemaRooms":
+            ID: Unikalny identyfikator sali kinowej.
+            Number: Numer sali kinowej.
+            Capacity: Pojemność sali kinowej (liczba miejsc).
+        </li>
+        <li style="font-size: 14px">
+            Tabela "Movies":
+            ID: Unikalny identyfikator filmu.
+            Title: Tytuł filmu.
+            Description: Opis filmu.
+        </li>
+        <li style="font-size: 14px">
+            Tabela "Screenings":
+            ID: Unikalny identyfikator seansu.
+            MovieID: ID filmu, do którego seans jest przypisany (klucz obcy).
+            Room: ID sali kinowej, w której odbywa się seans. (klucz obcy)
+            Date: Data seansu.
+            Time: Godzina rozpoczęcia seansu.
+        </li>
+        <li style="font-size: 14px">
+
+            Tabela "Reservations":
+            ID: Unikalny identyfikator rezerwacji.
+            ScreeningID: ID seansu, na który dokonano rezerwacji (klucz obcy).
+            FirstName: Imię osoby dokonującej rezerwacji.
+            LastName: Nazwisko osoby dokonującej rezerwacji.
+            SeatNumber: Numer zarezerwowanego miejsca.
+        </li>
+    </ul>
+    W bazie danych istnieje relacja jeden do wielu między tabelami Movies i Screenings, gdzie jeden film może mieć wiele seansów, ale jeden seans jest przypisany tylko do jednego filmu. Każdy seans jest również przypisany do konkretnej sali kinowej. Tabela Reservations przechowuje informacje o rezerwacjach biletów na seanse i ma powiązanie z konkretnym seansem.
+</p>
+<img src="~/Content/Diagram.png" alt="Database">
+
+<h2>
+    Kontrolery:
+</h2>
+
+<p>
+    “CinemaRoomController",”HomeController”,”MovieControler”,”ReservationsController”,”ScreeningController”obsługują żądania związane z operacjami CRUD (Create, Read, Update, Delete) na modelu "CinemaRoom" w aplikacji CinemaApp.
+
+</p>
+
+<h2>
+    Widoki:
+</h2>
+
+<p>
+    <ul>
+        <li style="font-size: 14px">
+            Widok "Create" zawiera formularz do tworzenia nowego wiersza.
+            Po wypełnieniu formularza, przesyłane są dane do akcji "Create" za pomocą metody POST.
+        </li>
+        <li style="font-size: 14px">
+            Widok "Delete" wyświetla potwierdzenie usunięcia konkretnego wiersza.
+            Zawiera formularz potwierdzenia usunięcia, który przesyła żądanie POST do akcji "DeleteConfirm".
+        </li>
+        <li style="font-size: 14px">
+            Widok "Edit" zawiera formularz do edycji danych konkretnego wiersza.
+            Po zatwierdzeniu formularza, przesyłane są zmienione dane do akcji "Edit" za pomocą metody POST.
+        </li>
+        <li style="font-size: 14px">
+            Widok "View" wyświetla szczegółowe informacje o konkretnym wejściu.
+            Zawiera odnośniki do akcji "Edit" i "Back To List".
+        </li>
+        <li style="font-size: 14px">
+            Widok "ViewAll" wyświetla listę wszystkich wierszy.
+            Zawiera odnośniki do akcji "Edit", "View" i "Delete".
+            Zawiera także odnośnik "Create New", który przenosi użytkownika do widoku "Create".
+        </li>
+    </ul>
+
+</p>
